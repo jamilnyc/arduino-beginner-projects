@@ -34,8 +34,8 @@ const int TOLERANCE = 5;
  * from 0. Then adjust accordingly. Make sure you don't move
  * or tilt the accelerometer chip after you've calibrated it.
  */
-const int X_CALIBRATION = -335;
-const int Y_CALIBRATION = -335;
+const int X_CALIBRATION = -350;
+const int Y_CALIBRATION = -331;
 const int Z_CALIBRATION = -404;
 
 // Stores the current value read in from the accelerometer
@@ -67,29 +67,29 @@ void loop()
     digitalWrite(LED_TOP, LOW);
     digitalWrite(LED_BOTTOM, LOW);
   } else if (isTiltedLeft()) {
-    digitalWrite(LED_LEFT, HIGH);
-    digitalWrite(LED_CENTER, LOW);
-    digitalWrite(LED_RIGHT, LOW);
-    digitalWrite(LED_TOP, LOW);
-    digitalWrite(LED_BOTTOM, LOW);
-  } else if (isTiltedRight()) {
     digitalWrite(LED_LEFT, LOW);
     digitalWrite(LED_CENTER, LOW);
     digitalWrite(LED_RIGHT, HIGH);
+    digitalWrite(LED_TOP, LOW);
+    digitalWrite(LED_BOTTOM, LOW);
+  } else if (isTiltedRight()) {
+    digitalWrite(LED_LEFT, HIGH);
+    digitalWrite(LED_CENTER, LOW);
+    digitalWrite(LED_RIGHT, LOW);
     digitalWrite(LED_TOP, LOW);
     digitalWrite(LED_BOTTOM, LOW);
   } else if (isTiltedForward()) {
     digitalWrite(LED_LEFT, LOW);
     digitalWrite(LED_CENTER, LOW);
     digitalWrite(LED_RIGHT, LOW);
-    digitalWrite(LED_TOP, HIGH);
-    digitalWrite(LED_BOTTOM, LOW);
+    digitalWrite(LED_TOP, LOW);
+    digitalWrite(LED_BOTTOM, HIGH);
   } else {
     digitalWrite(LED_LEFT, LOW);
     digitalWrite(LED_CENTER, LOW);
     digitalWrite(LED_RIGHT, LOW);
-    digitalWrite(LED_TOP, LOW);
-    digitalWrite(LED_BOTTOM, HIGH);
+    digitalWrite(LED_TOP, HIGH);
+    digitalWrite(LED_BOTTOM, LOW);
   }
   
   delay(100); 
@@ -141,6 +141,3 @@ void printAccelerometerValues()
   Serial.print(z); 
   Serial.print("\n");
 }
-
-
-
